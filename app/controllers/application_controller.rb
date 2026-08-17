@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-
-  def hello
-    "This is home page"
-
+  def main_page
+    render "This is the main page from alpha-blog"
+  end
 end
