@@ -1,0 +1,15 @@
+current directory: /home/abhisheknagare/Desktop/alpha-blog/vendor/bundle/ruby/3.0.0/gems/cgi-0.5.2/ext/cgi/escape
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20260817-3951-9uf54w.rb extconf.rb
+creating Makefile
+
+current directory: /home/abhisheknagare/Desktop/alpha-blog/vendor/bundle/ruby/3.0.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= clean
+
+current directory: /home/abhisheknagare/Desktop/alpha-blog/vendor/bundle/ruby/3.0.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\=
+compiling escape.c
+linking shared-object cgi/escape.so
+
+current directory: /home/abhisheknagare/Desktop/alpha-blog/vendor/bundle/ruby/3.0.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260817-3951-b3vl7p/cgi
