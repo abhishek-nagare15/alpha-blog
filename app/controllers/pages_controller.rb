@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-  def homepage
-    render html:"This is page controller"
+  def home
+  end
+
+  def about
   end
 end
