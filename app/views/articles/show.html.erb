@@ -3,6 +3,11 @@
 
   <div class="card shadow-sm">
     <div class="card-body">
+
+      <p class="text-muted">
+        Created by: <strong><%= @article.user.username %></strong>
+      </p>
+
       <h3 class="card-title">
         <%= @article.title %>
       </h3>

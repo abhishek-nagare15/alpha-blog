@@ -8,6 +8,11 @@
   <% @articles.each do |article| %>
     <div class="card mb-4 shadow-sm">
       <div class="card-body">
+
+        <p class="text-muted mb-2">
+          Created by: <strong><%= article.user.username %></strong>
+        </p>
+
         <h5 class="card-title">
           <%= article.title %>
         </h5>
@@ -16,9 +21,13 @@
           <%= article.description %>
         </p>
 
-        <%= link_to "Show", article_path(article), class: "btn btn-primary" %>
+        <%= link_to "Show",
+                    article_path(article),
+                    class: "btn btn-primary" %>
 
-        <%= link_to "Edit", edit_article_path(article), class: "btn btn-warning" %>
+        <%= link_to "Edit",
+                    edit_article_path(article),
+                    class: "btn btn-warning" %>
 
         <%= link_to "Delete",
                     article_path(article),
