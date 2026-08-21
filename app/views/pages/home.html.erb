@@ -1,4 +1,18 @@
-<h1>This is home page</h1>
+<div class="container" id="home-container">
+  <div id="home-hero" class="text-center text-white rounded-3 p-5">
+    <h1 class="display-4">Alpha Blog</h1>
 
-<%= link_to "Articles listing", articles_path %> |
-<%= link_to "About Page", about_path %>
+    <p class="lead">
+      This is a simple blog application where you can create, view,
+      edit, and manage articles.
+    </p>
+
+    <hr class="my-4">
+
+    <p>
+      Start exploring articles or create your own article.
+    </p>
+
+    <%= link_to "View Articles", articles_path, class: "btn btn-success btn-lg" %>
+  </div>
+</div>

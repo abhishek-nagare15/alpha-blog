@@ -1,5 +1,11 @@
-<h1>Edit article</h1>
+<div class="container mt-4">
+  <h1 class="text-center">Edit Article</h1>
 
-<%= render 'form' %>
+  <%= render "form" %>
 
-<%= link_to "Cancel and Return to articles listing", articles_path %>
+  <div class="text-center mt-3">
+    <%= link_to "Cancel and Return to Articles",
+                articles_path,
+                class: "btn btn-secondary" %>
+  </div>
+</div>

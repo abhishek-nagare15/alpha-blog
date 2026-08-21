@@ -1,26 +1,45 @@
-<% if @article.errors.any? %>
-  <h2>The following errors prevented the article from being saved</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
 
-<%= form_with(model: @article, local: true, data: { turbo: false }) do |f| %>
+      <% if @article.errors.any? %>
+        <div class="alert alert-danger">
+          <h4>
+            The following errors prevented the article from being saved:
+          </h4>
 
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
+          <ul class="mb-0">
+            <% @article.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
+      <%= form_with(model: @article, local: true, data: { turbo: false }) do |f| %>
 
-  <p>
-    <%= f.submit %>
-  </p>
+        <div class="mb-3">
+          <%= f.label :title, class: "form-label" %>
 
-<% end %>
+          <%= f.text_field :title,
+                           class: "form-control",
+                           placeholder: "Enter article title" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :description, class: "form-label" %>
+
+          <%= f.text_area :description,
+                          class: "form-control",
+                          rows: 6,
+                          placeholder: "Enter article description" %>
+        </div>
+
+        <div class="text-center">
+          <%= f.submit class: "btn btn-success btn-lg" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

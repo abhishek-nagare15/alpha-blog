@@ -1,8 +1,33 @@
-<h1>Showing article details</h1>
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Showing Article Details</h1>
 
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Description: </strong><%= @article.description %></p>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= @article.title %>
+      </h3>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Delete', article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> |
-<%= link_to "Return to articles listing", articles_path %>
+      <p class="card-text">
+        <%= @article.description %>
+      </p>
+
+      <hr>
+
+      <%= link_to "Edit",
+                  edit_article_path(@article),
+                  class: "btn btn-warning" %>
+
+      <%= link_to "Delete",
+                  article_path(@article),
+                  class: "btn btn-danger",
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+
+      <%= link_to "Return to articles",
+                  articles_path,
+                  class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
