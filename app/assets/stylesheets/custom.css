@@ -2,8 +2,12 @@
   background-color: black !important;
 }
 
-.nav-link {
+.navbar .nav-link {
   color: white !important;
+}
+
+.navbar .nav-link:hover {
+  color: #cccccc !important;
 }
 
 #logo {
@@ -12,6 +16,11 @@
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 #home-container {
@@ -24,15 +33,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 425px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 html,
 body {
   height: 100%;
-}
-
-body {
-  min-height: 100vh;
 }
 
 #page-content {
