@@ -40,6 +40,10 @@ body {
   background-color: lightgrey;
 }
 
+.field_with_errors {
+  display: contents;
+}
+
 #sticky-footer {
   flex-shrink: 0;
 }
