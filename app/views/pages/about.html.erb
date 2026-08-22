@@ -1,4 +1,17 @@
-<h1>This is about page</h1>
-
-<%= link_to "Articles listing", articles_path %> |
-<%= link_to "Home Page", root_path %>
+<section class="page-hero">
+  <div class="container text-center">
+    <span class="section-kicker">ABOUT ALPHA BLOG</span>
+    <h1>A simple platform built for sharing ideas.</h1>
+    <p>Alpha Blog gives writers a place to publish their thoughts and readers a place to discover new perspectives.</p>
+  </div>
+</section>
+<section class="about-section">
+  <div class="container"><div class="row justify-content-center"><div class="col-lg-9">
+    <div class="about-card">
+      <h2>Why Alpha Blog?</h2>
+      <p>Everyone has ideas worth sharing. Alpha Blog is a simple blogging platform where users can create an account, write articles, edit their work, and discover other bloggers.</p>
+      <p>This project is built as part of a Ruby on Rails learning journey and continues to grow as new features are added.</p>
+      <div class="about-actions"><%= link_to "Explore Articles", articles_path, class: "btn btn-primary" %><%= link_to "Meet the Bloggers", users_path, class: "btn btn-outline-primary" %></div>
+    </div>
+  </div></div></div>
+</section>

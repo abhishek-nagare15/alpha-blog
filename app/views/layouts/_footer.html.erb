@@ -1,7 +1,33 @@
-<footer id="sticky-footer" class="py-4 bg-dark text-white mt-auto">
-  <div class="container text-center">
-    <small>
-      Copyright &copy; <%= link_to "Alpha Blog", root_path, class: "text-white" %>
-    </small>
+<footer class="site-footer mt-auto">
+  <div class="container py-5">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-5">
+        <%= link_to root_path, class: "footer-brand" do %>
+          <span class="brand-mark">A</span><span>Alpha Blog</span>
+        <% end %>
+        <p class="footer-description mt-3">A simple place to share ideas, discover stories, and connect with people who love writing.</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Explore</h6>
+        <ul class="list-unstyled footer-links">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Articles", articles_path %></li>
+          <li><%= link_to "Bloggers", users_path %></li>
+          <li><%= link_to "About", about_path %></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Start Writing</h6>
+        <ul class="list-unstyled footer-links">
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Create Article", new_article_path %></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <small>© <%= Time.current.year %> <%= link_to "Alpha Blog", root_path, class: "footer-copyright-link" %>. All rights reserved.</small>
+      <small>Built with Ruby on Rails</small>
+    </div>
   </div>
 </footer>

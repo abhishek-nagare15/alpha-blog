@@ -1,18 +1,41 @@
-<div class="container" id="home-container">
-  <div id="home-hero" class="text-center text-white rounded-3 p-5">
-    <h1 class="display-4">Alpha Blog</h1>
-
-    <p class="lead">
-      This is a simple blog application where you can create, view,
-      edit, and manage articles.
-    </p>
-
-    <hr class="my-4">
-
-    <p>
-      Start exploring articles or create your own article by Signing up!.
-    </p>
-
-    <%= link_to "Sign up", signup_path, class: "btn btn-success btn-lg" %>
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center min-vh-75">
+      <div class="col-lg-7">
+        <span class="hero-badge">A place for ideas, stories and creativity</span>
+        <h1 class="hero-title">Share your ideas.<span> Tell your story.</span></h1>
+        <p class="hero-text">Alpha Blog is a community where you can create articles, discover new perspectives, and share your thoughts with others.</p>
+        <div class="d-flex flex-wrap gap-3 hero-buttons">
+          <%= link_to "Start Writing", signup_path, class: "btn btn-primary btn-lg px-4" %>
+          <%= link_to "Explore Articles", articles_path, class: "btn btn-outline-dark btn-lg px-4" %>
+        </div>
+        <div class="hero-stats">
+          <div><strong>Write</strong><span>Share your thoughts</span></div>
+          <div><strong>Discover</strong><span>Explore new ideas</span></div>
+          <div><strong>Connect</strong><span>Meet bloggers</span></div>
+        </div>
+      </div>
+      <div class="col-lg-5 mt-5 mt-lg-0">
+        <div class="hero-card">
+          <div class="hero-card-top"><span class="hero-dot"></span><span class="hero-dot"></span><span class="hero-dot"></span></div>
+          <div class="hero-card-content">
+            <span class="article-label">FEATURED IDEA</span>
+            <h2>Every great idea deserves a place to be shared.</h2>
+            <p>Write about what inspires you and let your ideas travel further.</p>
+            <div class="hero-author"><div class="hero-avatar">A</div><div><strong>Alpha Blogger</strong><span>Sharing ideas with the world</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+<section class="home-feature-section">
+  <div class="container">
+    <div class="text-center section-heading"><span>WHY ALPHA BLOG?</span><h2>Everything you need to start sharing.</h2></div>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="feature-card"><div class="feature-icon">✍</div><h3>Write freely</h3><p>Create articles and turn your thoughts into stories.</p></div></div>
+      <div class="col-md-4"><div class="feature-card"><div class="feature-icon">◉</div><h3>Discover ideas</h3><p>Explore articles written by different Alpha Bloggers.</p></div></div>
+      <div class="col-md-4"><div class="feature-card"><div class="feature-icon">♟</div><h3>Build your profile</h3><p>Create your profile and showcase your articles.</p></div></div>
+    </div>
+  </div>
+</section>

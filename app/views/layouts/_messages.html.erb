@@ -1,15 +1,9 @@
-<div class="container mt-3">
+<div class="container flash-container">
   <% flash.each do |name, msg| %>
     <% alert_class = name.to_s == "notice" ? "alert-success" : "alert-danger" %>
-
-    <div class="alert <%= alert_class %> alert-dismissible fade show" role="alert">
-      <%= msg %>
-
-      <button type="button"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close">
-      </button>
+    <div class="alert <%= alert_class %> alert-dismissible fade show modern-alert" role="alert">
+      <div><strong><%= name.to_s == "notice" ? "Success!" : "Something went wrong!" %></strong> <span><%= msg %></span></div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
 </div>

@@ -1,68 +1,23 @@
-<% @articles.each do |article| %>
-  <div class="card article-card mb-4 border-0 shadow">
-    
-    <div class="card-header bg-white border-0 pt-3 px-4">
-      <div class="d-flex justify-content-between align-items-center">
-        
-        <div>
-          <span class="text-muted small">Created by</span>
-          <strong class="ms-1">
-            <%= link_to article.user.username, article.user, class: "text-decoration-none text-dark" %>
-          </strong>
+<% articles.each do |article| %>
+  <article class="article-card">
+    <div class="article-card-body">
+      <div class="article-meta">
+        <div class="article-author">
+          <div class="author-initial"><%= article.user.username.first.upcase %></div>
+          <div><span>Written by</span><strong><%= link_to article.user.username, user_path(article.user), class: "author-link" %></strong></div>
         </div>
-
-        <span class="badge rounded-pill text-bg-success">
-          Article
-        </span>
-
+        <span class="article-date"><%= time_ago_in_words(article.created_at) %> ago</span>
+      </div>
+      <h2><%= link_to article.title, article_path(article), class: "article-title-link" %></h2>
+      <p class="article-description"><%= truncate(article.description, length: 180) %></p>
+      <div class="article-actions">
+        <%= link_to "Read Article →", article_path(article), class: "read-more-link" %>
+        <div class="article-manage-actions">
+          <%= link_to "Edit", edit_article_path(article), class: "btn btn-sm btn-outline-primary" %>
+          <%= link_to "Delete", article_path(article), class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this article?" } %>
+        </div>
       </div>
     </div>
-
-    <div class="card-body px-4 py-4">
-
-      <h3 class="card-title mb-3">
-        <%= link_to article.title,
-                    article_path(article),
-                    class: "text-decoration-none text-dark article-title" %>
-      </h3>
-
-      <p class="card-text text-muted article-description">
-        <%= article.description %>
-      </p>
-
-      <div class="d-flex flex-wrap gap-2 mt-4">
-
-        <%= link_to article_path(article),
-                    class: "btn btn-primary px-3" do %>
-          View Article →
-        <% end %>
-
-        <%= link_to "Edit",
-                    edit_article_path(article),
-                    class: "btn btn-outline-warning px-3" %>
-
-        <%= link_to "Delete",
-                    article_path(article),
-                    class: "btn btn-outline-danger px-3",
-                    data: {
-                      turbo_method: :delete,
-                      turbo_confirm: "Are you sure you want to delete this article?"
-                    } %>
-
-      </div>
-    </div>
-
-    <div class="card-footer bg-light border-0 px-4 py-3">
-      <div class="d-flex flex-wrap justify-content-between gap-2 text-muted small">
-        <span>
-          🕒 Created <%= time_ago_in_words(article.created_at) %> ago
-        </span>
-
-        <span>
-          ✏️ Updated <%= time_ago_in_words(article.updated_at) %> ago
-        </span>
-      </div>
-    </div>
-
-  </div>
+    <div class="article-card-footer"><span>Created <%= time_ago_in_words(article.created_at) %> ago</span><span>Updated <%= time_ago_in_words(article.updated_at) %> ago</span></div>
+  </article>
 <% end %>

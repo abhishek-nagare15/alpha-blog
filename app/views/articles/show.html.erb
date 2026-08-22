@@ -1,38 +1,20 @@
-<div class="container mt-4">
-  <h1 class="text-center mb-4">Showing Article Details</h1>
-
-  <div class="card shadow-sm">
-    <div class="card-body">
-
-      <p class="text-muted">
-        Created by: <strong><%= @article.user.username %></strong>
-      </p>
-
-      <h3 class="card-title">
-        <%= @article.title %>
-      </h3>
-
-      <p class="card-text">
-        <%= @article.description %>
-      </p>
-
-      <hr>
-
-      <%= link_to "Edit",
-                  edit_article_path(@article),
-                  class: "btn btn-warning" %>
-
-      <%= link_to "Delete",
-                  article_path(@article),
-                  class: "btn btn-danger",
-                  data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
-
-      <%= link_to "Return to articles",
-                  articles_path,
-                  class: "btn btn-secondary" %>
-    </div>
-  </div>
-</div>
+<section class="article-show-page">
+  <div class="container"><div class="article-show-wrapper">
+    <%= link_to "← Back to Articles", articles_path, class: "back-link" %>
+    <article class="article-show-card">
+      <div class="article-show-header">
+        <div class="article-author"><div class="author-initial"><%= @article.user.username.first.upcase %></div><div><span>Written by</span><strong><%= link_to @article.user.username, user_path(@article.user), class: "author-link" %></strong></div></div>
+        <span class="article-date"><%= time_ago_in_words(@article.created_at) %> ago</span>
+      </div>
+      <h1><%= @article.title %></h1>
+      <div class="article-content"><%= simple_format(@article.description) %></div>
+      <div class="article-show-footer">
+        <div class="article-timestamps"><span>Created <%= time_ago_in_words(@article.created_at) %> ago</span><span>Updated <%= time_ago_in_words(@article.updated_at) %> ago</span></div>
+        <div class="d-flex flex-wrap gap-2">
+          <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-primary" %>
+          <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this article?" } %>
+        </div>
+      </div>
+    </article>
+  </div></div>
+</section>
