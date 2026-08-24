@@ -1,14 +1,27 @@
-<section class="listing-page"><div class="container">
-  <div class="page-heading text-center mb-5"><span class="section-kicker">OUR COMMUNITY</span><h1>Alpha Bloggers</h1><p>Meet the people who are sharing their thoughts and stories.</p></div>
-  <div class="row g-4">
-    <% @users.each do |user| %>
-      <div class="col-sm-6 col-lg-4"><div class="user-card">
-        <div class="user-card-avatar"><%= link_to gravatar_for(user, size: 160), user_path(user) %></div>
-        <h3><%= link_to user.username, user_path(user), class: "user-name-link" %></h3>
-        <p class="user-article-count"><%= pluralize(user.articles.count, "article") %> published</p>
-        <div class="d-flex justify-content-center gap-2"><%= link_to "View Profile", user_path(user), class: "btn btn-primary" %><%= link_to "Edit", edit_user_path(user), class: "btn btn-outline-primary" %></div>
-        <div class="user-card-footer">Joined <%= time_ago_in_words(user.created_at) %> ago</div>
-      </div></div>
-    <% end %>
+<section class="listing-page">
+  <div class="pagination-wrapper">
+    <%= will_paginate @users %>
   </div>
-</div></section>
+  <div class="container">
+    <div class="page-heading text-center mb-5"><span class="section-kicker">OUR COMMUNITY</span>
+      <h1>Alpha Bloggers</h1>
+      <p>Meet the people who are sharing their thoughts and stories.</p>
+    </div>
+    <div class="row g-4">
+      <% @users.each do |user| %>
+        <div class="col-sm-6 col-lg-4">
+          <div class="user-card">
+            <div class="user-card-avatar"><%= link_to gravatar_for(user, size: 160), user_path(user) %></div>
+            <h3><%= link_to user.username, user_path(user), class: "user-name-link" %></h3>
+            <p class="user-article-count"><%= pluralize(user.articles.count, "article") %> published</p>
+            <div class="d-flex justify-content-center gap-2"><%= link_to "View Profile", user_path(user), class: "btn btn-primary" %><%= link_to "Edit", edit_user_path(user), class: "btn btn-outline-primary" %></div>
+            <div class="user-card-footer">Joined <%= time_ago_in_words(user.created_at) %> ago</div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="pagination-wrapper">
+    <%= will_paginate @users %>
+  </div>
+</section>

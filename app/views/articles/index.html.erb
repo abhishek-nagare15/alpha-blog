@@ -1,9 +1,27 @@
 <section class="listing-page">
   <div class="container">
     <div class="page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
-      <div><span class="section-kicker">THE COMMUNITY BLOG</span><h1>Latest Articles</h1><p>Discover thoughts, stories, and ideas from Alpha Bloggers.</p></div>
+      <div>
+        <span class="section-kicker">THE COMMUNITY BLOG</span>
+        <h1>Latest Articles</h1>
+        <p>Discover thoughts, stories, and ideas from Alpha Bloggers.</p>
+      </div>
+
       <%= link_to "Write an Article", new_article_path, class: "btn btn-primary btn-lg" %>
     </div>
-    <div class="articles-grid"><%= render "article", articles: @articles %></div>
+
+    <!-- Top Pagination -->
+    <div class="pagination-wrapper">
+      <%= will_paginate @articles %>
+    </div>
+
+    <div class="articles-grid">
+      <%= render "article", articles: @articles %>
+    </div>
+
+    <!-- Bottom Pagination -->
+    <div class="pagination-wrapper">
+      <%= will_paginate @articles %>
+    </div>
   </div>
 </section>
