@@ -1,34 +1,79 @@
 <section class="profile-page">
   <div class="container">
     <div class="profile-header-card">
-      <div class="profile-avatar"><%= gravatar_for @user, size: 200 %></div>
-      <div class="profile-details"><span class="section-kicker">ALPHA BLOGGER</span>
-        <h1><%= @user.username %></h1>
-        <p>Member for <%= time_ago_in_words(@user.created_at) %></p>
-        <div class="profile-actions"><%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %><%= link_to "Browse Articles", articles_path, class: "btn btn-outline-primary" %></div>
+      <div class="profile-avatar">
+        <%= gravatar_for @user, size: 200 %>
       </div>
-      <div class="profile-stat"><strong><%= @user.articles.count %></strong><span><%= @user.articles.count == 1 ? "Article" : "Articles" %></span></div>
+
+      <div class="profile-details">
+        <span class="section-kicker">ALPHA BLOGGER</span>
+
+        <h1><%= @user.username %></h1>
+
+        <p>
+          Member for <%= time_ago_in_words(@user.created_at) %>
+        </p>
+
+        <div class="profile-actions">
+          <% if logged_in? && @user == current_user %>
+            <%= link_to "Edit Profile",
+                        edit_user_path(@user),
+                        class: "btn btn-primary" %>
+          <% end %>
+
+          <%= link_to "Browse Articles",
+                      articles_path,
+                      class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+
+      <div class="profile-stat">
+        <strong><%= @user.articles.count %></strong>
+
+        <span>
+          <%= @user.articles.count == 1 ? "Article" : "Articles" %>
+        </span>
+      </div>
     </div>
+
     <div class="pagination-wrapper">
       <%= will_paginate @articles %>
     </div>
+
     <div class="profile-articles-section">
       <div class="section-title-row">
-        <div><span class="section-kicker">WRITING</span>
+        <div>
+          <span class="section-kicker">WRITING</span>
           <h2><%= @user.username %>'s Articles</h2>
         </div>
-        <%= link_to "Write New Article", new_article_path, class: "btn btn-primary" %></div>
+
+        <%= link_to "Write New Article",
+                    new_article_path,
+                    class: "btn btn-primary" %>
+      </div>
+
       <% if @articles.any? %>
-        <div class="articles-grid"><%= render "articles/article", articles: @articles %></div>
+        <div class="articles-grid">
+          <%= render "articles/article", articles: @articles %>
+        </div>
       <% else %>
         <div class="empty-state">
           <div class="empty-state-icon">✍</div>
+
           <h3>No articles yet</h3>
-          <p><%= @user.username %> hasn't published anything yet.</p>
-          <%= link_to "Create the First Article", new_article_path, class: "btn btn-primary" %></div>
+
+          <p>
+            <%= @user.username %> hasn't published anything yet.
+          </p>
+
+          <%= link_to "Create the First Article",
+                      new_article_path,
+                      class: "btn btn-primary" %>
+        </div>
       <% end %>
     </div>
   </div>
+
   <div class="pagination-wrapper">
     <%= will_paginate @articles %>
   </div>

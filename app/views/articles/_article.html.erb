@@ -3,21 +3,66 @@
     <div class="article-card-body">
       <div class="article-meta">
         <div class="article-author">
-          <div class="author-initial"><%= article.user.username.first.upcase %></div>
-          <div><span>Written by</span><strong><%= link_to article.user.username, user_path(article.user), class: "author-link" %></strong></div>
+          <div class="author-initial">
+            <%= article.user.username.first.upcase %>
+          </div>
+
+          <div>
+            <span>Written by</span>
+            <strong>
+              <%= link_to article.user.username,
+                          user_path(article.user),
+                          class: "author-link" %>
+            </strong>
+          </div>
         </div>
-        <span class="article-date"><%= time_ago_in_words(article.created_at) %> ago</span>
+
+        <span class="article-date">
+          <%= time_ago_in_words(article.created_at) %> ago
+        </span>
       </div>
-      <h2><%= link_to article.title, article_path(article), class: "article-title-link" %></h2>
-      <p class="article-description"><%= truncate(article.description, length: 180) %></p>
+
+      <h2>
+        <%= link_to article.title,
+                    article_path(article),
+                    class: "article-title-link" %>
+      </h2>
+
+      <p class="article-description">
+        <%= truncate(article.description, length: 180) %>
+      </p>
+
       <div class="article-actions">
-        <%= link_to "Read Article →", article_path(article), class: "read-more-link" %>
-        <div class="article-manage-actions">
-          <%= link_to "Edit", edit_article_path(article), class: "btn btn-sm btn-outline-primary" %>
-          <%= link_to "Delete", article_path(article), class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this article?" } %>
-        </div>
+        <%= link_to "Read Article →",
+                    article_path(article),
+                    class: "read-more-link" %>
+
+        <% if logged_in? && article.user == current_user %>
+          <div class="article-manage-actions">
+            <%= link_to "Edit",
+                        edit_article_path(article),
+                        class: "btn btn-sm btn-outline-primary" %>
+
+            <%= link_to "Delete",
+                        article_path(article),
+                        class: "btn btn-sm btn-outline-danger",
+                        data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure you want to delete this article?"
+                        } %>
+          </div>
+        <% end %>
       </div>
     </div>
-    <div class="article-card-footer"><span>Created <%= time_ago_in_words(article.created_at) %> ago</span><span>Updated <%= time_ago_in_words(article.updated_at) %> ago</span></div>
+
+    <div class="article-card-footer">
+      <span>
+        Created <%= time_ago_in_words(article.created_at) %> ago
+      </span>
+
+      <span>
+        Updated <%= time_ago_in_words(article.updated_at) %> ago
+      </span>
+    </div>
   </article>
 <% end %>
