@@ -1,0 +1,58 @@
+<section class="auth-page">
+  <div class="container">
+    <div class="auth-wrapper">
+
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="auth-icon">A</div>
+
+          <h1>Welcome Back</h1>
+
+          <p>Log in to continue sharing and discovering stories.</p>
+        </div>
+
+        <%= form_with(scope: :session,
+                      url: login_path,
+                      local: true,
+                      data: { turbo: false },
+                      class: "auth-form") do |f| %>
+
+          <div class="auth-form-group">
+            <%= f.label :email, "Email Address" %>
+
+            <%= f.email_field :email,
+                              class: "form-control",
+                              placeholder: "Enter your email address",
+                              autofocus: true %>
+          </div>
+
+          <div class="auth-form-group">
+            <%= f.label :password, "Password" %>
+
+            <%= f.password_field :password,
+                                 class: "form-control",
+                                 placeholder: "Enter your password" %>
+          </div>
+
+          <div class="auth-actions">
+            <%= f.submit "Log in",
+                         class: "btn btn-primary auth-submit-btn" %>
+          </div>
+
+        <% end %>
+
+        <div class="auth-footer">
+          <p>
+            Don't have an account?
+            <%= link_to "Sign Up", signup_path %>
+          </p>
+
+          <%= link_to "← Back to Articles",
+                      articles_path,
+                      class: "back-link" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
