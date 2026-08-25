@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
   def main_page
     render "This is the main page from alpha-blog"
   end
+
+  def require_user
+    if !logged_in?
+      flash[:alert] = "You must be logged in to perform that action"
+      redirect_to login_path
+    end
+  end
 end
