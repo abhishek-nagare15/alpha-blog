@@ -1,0 +1,49 @@
+<section class="listing-page">
+  <div class="container">
+
+    <div class="page-heading text-center mb-5">
+      <span class="section-kicker">EXPLORE</span>
+      <h1>Categories</h1>
+      <p>Browse articles by category.</p>
+    </div>
+
+    <% if @categories.any? %>
+      <div class="row g-4">
+        <% @categories.each do |category| %>
+          <div class="col-sm-6 col-lg-4">
+            <div class="user-card">
+              <h3>
+                <%= link_to category.name,
+                            category_path(category),
+                            class: "user-name-link" %>
+              </h3>
+
+              <p class="user-article-count">
+                Created <%= time_ago_in_words(category.created_at) %> ago
+              </p>
+
+              <div class="d-flex justify-content-center">
+                <%= link_to "View Category",
+                            category_path(category),
+                            class: "btn btn-primary" %>
+              </div>
+
+              <div class="user-card-footer">
+                Updated <%= time_ago_in_words(category.updated_at) %> ago
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center py-5">
+        <p>No categories have been created yet.</p>
+      </div>
+    <% end %>
+
+    <div class="pagination-wrapper">
+      <%= will_paginate @categories %>
+    </div>
+
+  </div>
+</section>
