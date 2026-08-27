@@ -1,0 +1,19 @@
+<section class="listing-page">
+  <div class="container">
+    <div class="page-heading text-center mb-5">
+      <span class="section-kicker">CATEGORY</span>
+
+      <h1><%= @category.name %></h1>
+
+      <p>
+        Articles in the <%= @category.name %> category.
+      </p>
+    </div>
+
+    <div class="text-center">
+      <%= link_to "Back to Categories",
+                  categories_path,
+                  class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+</section>
