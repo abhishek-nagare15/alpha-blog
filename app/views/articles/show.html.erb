@@ -34,6 +34,16 @@
           <%= simple_format(@article.description) %>
         </div>
 
+        <% if @article.categories.any? %>
+          <div class="article-categories">
+            <% @article.categories.each do |category| %>
+              <%= link_to category.name,
+                          category_path(category),
+                          class: "article-category-link" %>
+            <% end %>
+          </div>
+        <% end %>
+
         <div class="article-show-footer">
           <div class="article-timestamps">
             <span>

@@ -19,6 +19,10 @@
               </h3>
 
               <p class="user-article-count">
+                <%= pluralize(category.articles.count, "article") %>
+              </p>
+
+              <p class="user-article-count">
                 Created <%= time_ago_in_words(category.created_at) %> ago
               </p>
 

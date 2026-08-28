@@ -32,6 +32,16 @@
         <%= truncate(article.description, length: 180) %>
       </p>
 
+      <% if article.categories.any? %>
+        <div class="article-categories">
+          <% article.categories.each do |category| %>
+            <%= link_to category.name,
+                        category_path(category),
+                        class: "article-category-link" %>
+          <% end %>
+        </div>
+      <% end %>
+
       <div class="article-actions">
         <%= link_to "Read Article →",
                     article_path(article),

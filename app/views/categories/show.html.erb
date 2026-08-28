@@ -1,5 +1,6 @@
 <section class="listing-page">
   <div class="container">
+
     <div class="page-heading text-center mb-5">
       <span class="section-kicker">CATEGORY</span>
 
@@ -10,10 +11,30 @@
       </p>
     </div>
 
-    <div class="text-center">
+    <div class="text-center mb-5">
       <%= link_to "Back to Categories",
                   categories_path,
                   class: "btn btn-outline-primary" %>
     </div>
+
+    <% if @articles.any? %>
+      <div class="pagination-wrapper">
+        <%= will_paginate @articles %>
+      </div>
+
+      <div class="articles-list">
+        <%= render partial: "articles/article",
+                   locals: { articles: @articles } %>
+      </div>
+
+      <div class="pagination-wrapper">
+        <%= will_paginate @articles %>
+      </div>
+    <% else %>
+      <div class="text-center py-5">
+        <p>No articles have been added to this category yet.</p>
+      </div>
+    <% end %>
+
   </div>
 </section>
