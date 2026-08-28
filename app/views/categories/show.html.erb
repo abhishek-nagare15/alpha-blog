@@ -15,6 +15,12 @@
       <%= link_to "Back to Categories",
                   categories_path,
                   class: "btn btn-outline-primary" %>
+
+      <% if logged_in? && current_user.admin? %>
+        <%= link_to "Edit Category",
+                    edit_category_path(@category),
+                    class: "btn btn-primary ms-2" %>
+      <% end %>
     </div>
 
     <% if @articles.any? %>
